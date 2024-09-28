@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "MOONBIX BYPASS",
+  "version": "1.0",
+  "description": "MOONBIX BYPASS",
+  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
+  "background": {
+    "scripts": ["script.js"],
+    "persistent": true
+  },
+  "web_accessible_resources": ["page-6553.js"]
+}

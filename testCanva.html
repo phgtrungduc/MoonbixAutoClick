@@ -1,33 +1,45 @@
-<!DOCTYPE html>
-<html>
+<div class="canvas-wrapper">
+    <canvas id="myCanvas"></canvas>
+</div>
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
 
-<body>
-    <h1>HTML5 Canvas</h1>
-    <h2>The stroke() Method</h2>
+    // Load the image
+    const image = new Image();
+    image.src = './a.jpg'; // Replace with the actual image path
 
-    <canvas id="myCanvas" width="300" height="150" style="border:1px solid grey"></canvas>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script>
-        const c = document.getElementById("myCanvas");
-        const ctx = c.getContext("2d");
-        ctx.beginPath();
-        ctx.moveTo(20, 20);
-        ctx.lineTo(20, 100);
-        ctx.lineTo(70, 100);
-        ctx.strokeStyle = "red";
-        ctx.stroke();
-    </script>
-    <script>
-        $(document).ready(function () {
-            console.log("ready!");
-            const canvas = $("canvas");
-            const context = canvas[0].getContext('2d');
-            const something = context.getImageData(0, 0, canvas.width(), canvas.height())
-            console.log(something);
-        });
-    </script>
+    // Event listener to handle image loading
+    image.onload = function () {
+        // Set canvas dimensions to match the image
+        canvas.width = 500;
+        canvas.height = 600;
 
-</body>
+        // Draw the image onto the canvas
+        ctx.drawImage(image, 0, 0);
+    };
 
-</html>
+
+    setTimeout(() => {
+        debugger
+        const originalCanvas = document.getElementById('myCanvas');
+
+if (originalCanvas) {
+    const clonedCanvas = originalCanvas.cloneNode(true);
+
+    // Ensure canvas dimensions are set
+    clonedCanvas.width = originalCanvas.width;
+    clonedCanvas.height = originalCanvas.height;
+
+    // Check if the canvas is hidden
+    if (window.getComputedStyle(clonedCanvas).display === 'none') {
+        console.error("Cloned canvas is hidden.");
+    } else {
+        // Append the cloned canvas to the body
+        document.body.appendChild(clonedCanvas);
+    }
+} else {
+    console.error("Original canvas not found.");
+}
+        }, 0)
+</script>
